@@ -14,7 +14,6 @@ RUN set -ex; \
 ENV BUILDTOOLS_BUILD 70
 ENV BUILDTOOLS_SHA1 d8ae5f8fd0f873b3565a9556bd7d2dbf3ee041e7
 
-RUN mkdir -p /opt/build/spigot/
 WORKDIR /src/build/spigot/
 
 RUN set -ex; \
