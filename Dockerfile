@@ -22,5 +22,3 @@ RUN set -ex; \
 	chmod +x BuildTools.jar
 
 RUN ["java", "-jar", "BuildTools.jar", "--rev", "1.12.2"]
-
-
