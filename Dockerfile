@@ -11,8 +11,8 @@ RUN set -ex; \
         apt-get clean; \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV BUILDTOOLS_BUILD 70
-ENV BUILDTOOLS_SHA1 d8ae5f8fd0f873b3565a9556bd7d2dbf3ee041e7
+ENV BUILDTOOLS_BUILD 75
+ENV BUILDTOOLS_SHA1 70129cbf2862472b5c417e53eb3b54e61f810c25
 
 WORKDIR /src/build/spigot/
 
@@ -21,4 +21,4 @@ RUN set -ex; \
 	echo "$BUILDTOOLS_SHA1 *BuildTools.jar" | sha1sum -c -; \
 	chmod +x BuildTools.jar
 
-RUN ["java", "-jar", "BuildTools.jar", "--rev", "1.12.2"]
+RUN ["java", "-jar", "BuildTools.jar", "--rev", "1.13"]
