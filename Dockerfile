@@ -21,4 +21,4 @@ RUN set -ex; \
 	echo "$BUILDTOOLS_SHA1 *BuildTools.jar" | sha1sum -c -; \
 	chmod +x BuildTools.jar
 
-RUN ["java", "-jar", "BuildTools.jar", "--rev", "1.13"]
+RUN ["java", "-jar", "BuildTools.jar", "--rev", "1.12.2"]
