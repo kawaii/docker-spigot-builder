@@ -3,8 +3,8 @@ MAINTAINER Kane Valentine <kane@cute.im>
 
 RUN set -ex; \
 	\
-	apt-get update; \
-	apt-get install -y --no-install-suggests --no-install-recommends \
+	apt-get update -qq; \
+	apt-get install -qq --no-install-suggests --no-install-recommends \
 		curl \
 		git \
 	; \
