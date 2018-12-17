@@ -11,8 +11,8 @@ RUN set -ex; \
         apt-get clean; \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV BUILDTOOLS_BUILD 83
-ENV BUILDTOOLS_SHA1 580e9adf818315dc3221814a188db0995d780b20
+ENV BUILDTOOLS_BUILD 88
+ENV BUILDTOOLS_SHA1 dca988e65f8fc9ce36a2dd8e5e4f1b699e0781ef
 
 WORKDIR /src/build/spigot/
 
