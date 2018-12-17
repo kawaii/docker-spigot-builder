@@ -1,5 +1,5 @@
 FROM openjdk:10-jdk-slim
-MAINTAINER Kane Valentine <kane@cute.im>
+LABEL maintainer="Kane Valentine <kane@cute.im>"
 
 RUN set -ex; \
 	\
