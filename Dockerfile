@@ -1,5 +1,14 @@
-FROM openjdk:10-jdk-slim
-LABEL maintainer="Kane Valentine <kane@cute.im>"
+FROM openjdk:11-jdk-slim
+
+ARG BUILD_AUTHORS
+ARG BUILD_DATE
+ARG BUILDTOOLS_BUILD
+ARG BUILDTOOLS_SHA1SUM
+ARG BUILD_VERSION
+
+LABEL org.opencontainers.image.authors=$BUILD_AUTHORS \
+      org.opencontainers.image.created=$BUILD_DATE \
+      org.opencontainers.image.version=$BUILD_VERSION
 
 RUN set -ex; \
 	\
@@ -11,8 +20,8 @@ RUN set -ex; \
         apt-get clean; \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV BUILDTOOLS_BUILD 91
-ENV BUILDTOOLS_SHA1 5bfeb7048d630fe5e4b2cbd974ecb785df80e537
+ENV BUILDTOOLS_BUILD $BUILDTOOLS_BUILD
+ENV BUILDTOOLS_SHA1 $BUILDTOOLS_SHA1SUM
 
 WORKDIR /src/build/spigot/
 
@@ -21,4 +30,5 @@ RUN set -ex; \
 	echo "$BUILDTOOLS_SHA1 *BuildTools.jar" | sha1sum -c -; \
 	chmod +x BuildTools.jar
 
-RUN ["java", "-jar", "BuildTools.jar", "--rev", "1.13.2"]
+ENV BUILD_VERSION $BUILD_VERSION
+RUN java -jar BuildTools.jar --rev ${BUILD_VERSION}
