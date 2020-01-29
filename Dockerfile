@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-slim
+FROM openjdk:12-jdk-alpine
 
 ARG BUILD_AUTHORS
 ARG BUILD_DATE
@@ -12,13 +12,9 @@ LABEL org.opencontainers.image.authors=$BUILD_AUTHORS \
 
 RUN set -ex; \
 	\
-	apt-get update -qq; \
-	apt-get install -qq --no-install-suggests --no-install-recommends \
+	apk add --update \
 		curl \
-		git \
-	; \
-        apt-get clean; \
-	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+		git
 
 ENV BUILDTOOLS_BUILD $BUILDTOOLS_BUILD
 ENV BUILDTOOLS_SHA1 $BUILDTOOLS_SHA1SUM
