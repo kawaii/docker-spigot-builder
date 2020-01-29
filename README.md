@@ -5,10 +5,10 @@ Dockerfile to automate the Spigot Minecraft server build process. You should use
 Upon a successful build, the Spigot binary will be placed in `/src/build/spigot/` and can be copied out as part of your server Dockerfile instructions. This has the benefit of only running the server binary in a pure JRE environment, without all the build tools and unnecessary bloat within the container:
 
 ```
-FROM kawaii/spigot-builder:1.13.2 as BUILD
+FROM kawaii/spigot-builder:1.15.2 as BUILD
 
-FROM openjdk:11-jre-slim
-COPY --from=BUILD /src/build/spigot/spigot-1.13.2.jar /usr/bin/spigot-1.13.2.jar
+FROM openjdk:12-jdk-alpine
+COPY --from=BUILD /src/build/spigot/spigot-1.15.2.jar /usr/bin/spigot.jar
 ```
 
 ## Usage
@@ -21,8 +21,8 @@ docker build \
   --build-arg BUILD_AUTHORS="Kane 'kawaii' Valentine <kane@cute.im>" \
   --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
   --build-arg BUILDTOOLS_BUILD=101 \
-  --build-arg BUILDTOOLS_SHA1SUM=ac3c71ee8ffba562f95700ac3aa03e76a0e5e8a1 \
-  --build-arg BUILD_VERSION=1.14.2 \
-  --tag kawaii/spigot-builder:1.14.2 \
+  --build-arg BUILDTOOLS_SHA1SUM=a6ef99c422578158b12239e5a2654314dd82aa4c \
+  --build-arg BUILD_VERSION=1.15.2 \
+  --tag kawaii/spigot-builder:1.15.2 \
 $PWD
 ```
