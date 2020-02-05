@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on:
+  schedule:
+  - cron: "0 2 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUILDTOOLS_BUILD: 101
+      BUILDTOOLS_SHA1SUM: a6ef99c422578158b12239e5a2654314dd82aa4c
+    strategy:
+      matrix:
+        BUILD_VERSION: [0.15, 0.15.1, 0.15.2]
+    steps:
+    - name: Build the Docker image
+      run: docker build --build-arg BUILD_AUTHORS="Kane 'kawaii' Valentine <kane@cute.im>" --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILDTOOLS_BUILD=$BUILDTOOLS_BUILD --build-arg BUILDTOOLS_SHA1SUM=$BUILDTOOLS_SHA1SUM --build-arg BUILD_VERSION=${{ matrix.BUILD_VERSION }} --tag kawaii/spigot-builder:${{ matrix.BUILD_VERSION }} --no-cache --force-rm $PWD
