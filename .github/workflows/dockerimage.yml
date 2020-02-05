@@ -32,4 +32,4 @@ jobs:
       - name: Push the Docker image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
-          docker push $IMAGE_ID:$BUILD_VERSION
+          docker push $IMAGE_ID:${{ matrix.BUILD_VERSION }}
