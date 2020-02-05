@@ -27,9 +27,3 @@ jobs:
             --build-arg BUILD_VERSION=${{ matrix.BUILD_VERSION }} \
             --tag kawaii/spigot-builder:${{ matrix.BUILD_VERSION }} \
           $PWD
-      - name: Authenticate to GitHub package registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-      - name: Push the Docker image
-        run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
-          docker push $IMAGE_ID:${{ matrix.BUILD_VERSION }}
