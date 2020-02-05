@@ -15,4 +15,4 @@ jobs:
         BUILD_VERSION: [0.15, 0.15.1, 0.15.2]
     steps:
     - name: Build the Docker image
-      run: docker build --build-arg BUILD_AUTHORS="Kane 'kawaii' Valentine <kane@cute.im>" --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILDTOOLS_BUILD=$BUILDTOOLS_BUILD --build-arg BUILDTOOLS_SHA1SUM=$BUILDTOOLS_SHA1SUM --build-arg BUILD_VERSION=${{ matrix.BUILD_VERSION }} --tag kawaii/spigot-builder:${{ matrix.BUILD_VERSION }} --no-cache --force-rm --file Dockerfile $PWD
+      run: docker build --build-arg BUILD_AUTHORS="Kane 'kawaii' Valentine <kane@cute.im>" --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILDTOOLS_BUILD=$BUILDTOOLS_BUILD --build-arg BUILDTOOLS_SHA1SUM=$BUILDTOOLS_SHA1SUM --build-arg BUILD_VERSION=${{ matrix.BUILD_VERSION }} --tag kawaii/spigot-builder:${{ matrix.BUILD_VERSION }} . --no-cache --force-rm
