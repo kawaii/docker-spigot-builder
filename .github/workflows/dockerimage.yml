@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      BUILDTOOLS_BUILD: 101
+      BUILDTOOLS_BUILD: 110
       BUILDTOOLS_SHA1SUM: a6ef99c422578158b12239e5a2654314dd82aa4c
     strategy:
       matrix:
