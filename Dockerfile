@@ -1,4 +1,4 @@
-FROM openjdk:12-jdk-alpine
+FROM openjdk:15-jdk-alpine
 
 ARG BUILD_AUTHORS
 ARG BUILD_DATE
